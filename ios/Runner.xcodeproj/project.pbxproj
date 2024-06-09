@@ -14,6 +14,7 @@
 		04BDA87A2BF7583E00CBCAF1 /* extenstion-exampleExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 04BDA8682BF7583C00CBCAF1 /* extenstion-exampleExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		04BDA8812BF7584D00CBCAF1 /* extenstion_example.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 04BDA8802BF7584D00CBCAF1 /* extenstion_example.intentdefinition */; };
 		04BDA8842BF7591300CBCAF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04BDA8832BF7591300CBCAF1 /* GoogleService-Info.plist */; };
+		04FDBDAC2C15A40300E5BDE8 /* Flutter.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0401648C2C15997800EF13F4 /* Flutter.xcframework */; };
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
@@ -54,19 +55,11 @@
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9705A1C41CF9048500538489 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0401648C2C15997800EF13F4 /* Flutter.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:S8QB4VV633:FLUTTER.IO LLC"; lastKnownFileType = wrapper.xcframework; name = Flutter.xcframework; path = ../../../../Developer/flutter/bin/cache/artifacts/engine/ios/Flutter.xcframework; sourceTree = "<group>"; };
+		04A002832C11DD3A00AF6888 /* Flutter.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:S8QB4VV633:FLUTTER.IO LLC"; lastKnownFileType = wrapper.xcframework; name = Flutter.xcframework; path = "../../../../Developer/flutter 3.22.0/bin/cache/artifacts/engine/ios/Flutter.xcframework"; sourceTree = "<group>"; };
 		04BDA8632BF7581F00CBCAF1 /* Runner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.entitlements; sourceTree = "<group>"; };
 		04BDA8682BF7583C00CBCAF1 /* extenstion-exampleExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "extenstion-exampleExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04BDA86A2BF7583C00CBCAF1 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -107,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04FDBDAC2C15A40300E5BDE8 /* Flutter.xcframework in Frameworks */,
 				04BDA86D2BF7583C00CBCAF1 /* SwiftUI.framework in Frameworks */,
 				04BDA86B2BF7583C00CBCAF1 /* WidgetKit.framework in Frameworks */,
 			);
@@ -134,6 +128,8 @@
 		04BDA8692BF7583C00CBCAF1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04A002832C11DD3A00AF6888 /* Flutter.xcframework */,
+				0401648C2C15997800EF13F4 /* Flutter.xcframework */,
 				04BDA86A2BF7583C00CBCAF1 /* WidgetKit.framework */,
 				04BDA86C2BF7583C00CBCAF1 /* SwiftUI.framework */,
 				AA291F4EB40D09D990A2242C /* Pods_Runner.framework */,
@@ -275,7 +271,6 @@
 				97C146EB1CF9000F007C117D /* Frameworks */,
 				97C146EC1CF9000F007C117D /* Resources */,
 				04BDA87F2BF7583E00CBCAF1 /* Embed Foundation Extensions */,
-				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				E3246719FFA78951D1D06706 /* [CP] Embed Pods Frameworks */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 				8E2DABEF3472A633CD31E634 /* [CP] Copy Pods Resources */,
@@ -559,7 +554,7 @@
 				INFOPLIST_FILE = "extenstion-example/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "extenstion-example";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -601,7 +596,7 @@
 				INFOPLIST_FILE = "extenstion-example/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "extenstion-example";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -640,7 +635,7 @@
 				INFOPLIST_FILE = "extenstion-example/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "extenstion-example";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -701,7 +696,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = iphoneos;
@@ -834,7 +829,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -885,7 +880,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = iphoneos;

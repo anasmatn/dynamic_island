@@ -1,21 +1,29 @@
 import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dynamin_island/models/football_game_live_activity_model.dart';
 import 'package:dynamin_island/views/scoreboard/widgets/score_widget.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:live_activities/live_activities.dart';
 import 'package:live_activities/models/live_activity_image.dart';
 import 'package:live_activities/models/url_scheme_data.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:workmanager/workmanager.dart';
 
-Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  print(message.data);
-  // teamAName = message.data['0']['full_name'];
+@pragma(
+    'vm:entry-point') // Mandatory if the App is obfuscated or using Flutter 3.1+
+void callbackDispatcher() {
+  Workmanager().executeTask((task, inputData) {
+    print(
+        "Native called background task: $task"); //simpleTask will be emitted here.
+    return Future.value(true);
+  });
 }
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Workmanager().initialize(callbackDispatcher, isInDebugMode: true);
   await Firebase.initializeApp();
   runApp(const MyApp());
 }
@@ -63,14 +71,14 @@ class _HomeState extends State<Home> {
   final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance
       .collection('users')
       .snapshots(includeMetadataChanges: true);
-  String? deviceId;
+  // String? deviceId;
 
   getUpdateTeamsNames() async {
     // FirebaseMessaging.instance.subscribeToTopic('updates');
     docRef.collection('users').snapshots().listen(
       (event) {
-        teamAName = event.docs[0]['full_name'];
-        print(event.docs[0]['full_name']);
+        teamAName = event.docs[1]['full_name'];
+        print(teamAName);
         setState(() {
           _updateScore();
         });
@@ -112,10 +120,28 @@ class _HomeState extends State<Home> {
 
     // to get the activites status and id and token for each activity
     _liveActivitiesPlugin.activityUpdateStream.listen((event) {
-      event.mapOrNull(active: (val) async {
-        // print('active => ${val.activityToken}');
-        // print('active id => ${val.activityId}');
-      });
+      // event.mapOrNull(active: (val) async {
+      //   print('active => ${val.activityToken}');
+      //   docRef
+      //       .collection('users')
+      //       .doc('YGSZAhtxmxt3fpeahSvV')
+      //       .set({"activityToken": val.activityToken});
+      //   // print('active id => ${val.activityId}');
+      // });
+      event.map(
+        active: (activity) {
+          docRef
+              .collection('users')
+              .doc('avXGTqE83XFvpbUxe129')
+              .set({"activityToken": activity.activityToken});
+          // print('active id => ${val.activityId}');
+        },
+        ended: (activity) {
+          docRef.collection('users').doc('YGSZAhtxmxt3fpeahSvV').delete();
+        },
+        unknown: (activity) {},
+        stale: (value) {},
+      );
     });
 
     urlSchemeSubscription =
@@ -242,6 +268,10 @@ class _HomeState extends State<Home> {
                               await _liveActivitiesPlugin.createActivity(
                             _footballGameLiveActivityModel!.toMap(),
                           );
+                          Workmanager().registerOneOffTask(
+                              "task one", 'backgroudn task',
+                              constraints: Constraints(
+                                  networkType: NetworkType.connected));
                           setState(() => _latestActivityId = activityId);
                         },
                         child: const Column(
